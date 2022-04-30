@@ -18,6 +18,14 @@
         {
           color: black;
         }
+        .center
+        {
+          margin: auto;
+          width: 50%;
+          text-align: center;
+          margin-top: 30px;
+          border: 3px solid green;
+        }
     </style>
   </head>
   <body>
@@ -31,8 +39,9 @@
           <div class="content-wrapper">
             @if(session()->has('message'))
               <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <button type="button" class="btn-close" aria-label="Close"></button>
+                <!--<button id="bannerClose" class="btn border-0 p-0">
+                  <i class="mdi mdi-close text-white me-0"></i>
+                </button>-->
 
                 {{session()->get('message')}}
               </div>
@@ -46,6 +55,21 @@
                       <input type="submit" class="btn btn-primary" name="submit" value="Add Category"> 
                     </form>
                 </div>
+                <table class="center">
+                  <tr>
+                    <td>Category Name</td>
+                    <td>Action</td>
+                  </tr>
+
+                  @foreach ($data as $data)
+                  <tr>
+                    <td>{{$data->category_name}}</td>
+                    <td>
+                      <a class="btn btn-danger" href="">Delete</a>
+                    </td>
+                  </tr>
+                  @endforeach
+                </table>
            </div>
         </div>
     <!-- container-scroller -->
