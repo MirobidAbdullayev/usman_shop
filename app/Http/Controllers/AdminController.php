@@ -21,4 +21,11 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message', "Kategoriya qo'shildi!");
     }
+
+    public function delete_category($id)
+    {
+        $data=category::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 }
