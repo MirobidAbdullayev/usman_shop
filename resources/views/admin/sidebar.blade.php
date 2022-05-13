@@ -74,7 +74,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Mahsulot Qo'shish</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Mahsulot Qo'shish</a></li>
                 <li class="nav-item"> <a class="nav-link" href="">Mahsulotni Ko'rsatish</a></li>
               </ul>
             </div>

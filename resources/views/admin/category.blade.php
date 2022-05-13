@@ -47,7 +47,7 @@
               </div>
               @endif
                 <div class="div_center">
-                    <h2 class="h2_font">Add Category</h2>
+                    <h2 class="h2_font">Toifa Qo'shish</h2>
                     <form action="{{url('/add_category')}}" method="POST">
                       @csrf
                       <input type="text" class="input_color" name="category" placeholder="Write category name">
@@ -57,8 +57,8 @@
                 </div>
                 <table class="center">
                   <tr>
-                    <td>Category Name</td>
-                    <td>Action</td>
+                    <td>Toifa Nomi</td>
+                    <td>O'chirish</td>
                   </tr>
 
                   @foreach ($data as $data)
