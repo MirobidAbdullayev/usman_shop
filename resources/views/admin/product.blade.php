@@ -19,6 +19,15 @@
             color: black;
             padding-bottom: 20px;
         }
+        label
+        {
+          display: inline-block;
+          width: 200px;
+        }
+        .div_design
+        {
+          padding-bottom: 10px;
+        }
     </style>
   </head>
   <body>
@@ -50,39 +59,43 @@
           <div class="content-wrapper">
               <div class="div_center">
                   <h1 class="font_size">Mahsulotni Qo'shish</h1>
-                  <div>
+                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="div_design">
                     <label>Mahsulot Nomi :</label>
-                    <input class="text_color" type="text" name="title" placeholder="nomini yozing">
+                    <input class="text_color" type="text" name="title" placeholder="nomini yozing" required="">
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Mahsulot Tavsifi :</label>
-                    <input class="text_color" type="text" name="description" placeholder="tavsifini yozing">
+                    <input class="text_color" type="text" name="description" placeholder="tavsifini yozing" required="">
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Mahsulot Narxi :</label>
-                    <input class="text_color" type="number" name="price" placeholder="narxini yozing">
+                    <input class="text_color" type="number" name="price" placeholder="narxini yozing" required="">
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Chegirma Narxi :</label>
                     <input class="text_color" type="text" name="dis_price" placeholder="chegirma narxi">
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Mahsulot Miqdori :</label>
-                    <input class="text_color" type="number" min="0" name="quantity" placeholder="miqdorini yozing">
+                    <input class="text_color" type="number" min="0" name="quantity" placeholder="miqdorini yozing" required="">
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Mahsulot Toifasi :</label>
-                    <select class="text_color" name="category">
+                    <select class="text_color" name="category" required="">
+                        <option value="" selected="">Bu yerga toifa qo'shing</option>
                         <option>Shim</option>
                     </select>
                   </div>
-                  <div>
+                  <div class="div_design">
                     <label>Mahsulot Rasmi :</label>
-                    <input type="file" name="image">
+                    <input type="file" name="image" required="">
                   </div>
-                  <div>
-                      <input type="submit">
+                  <div class="div_design">
+                      <input type="submit" value="Mahsulot Qo'shish" class="btn btn-primary">
                   </div>
+                </form>
               </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
