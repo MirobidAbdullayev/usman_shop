@@ -85,7 +85,10 @@
                     <label>Mahsulot Toifasi :</label>
                     <select class="text_color" name="category" required="">
                         <option value="" selected="">Bu yerga toifa qo'shing</option>
-                        <option>Shim</option>
+                        @foreach ($category as $category)
+                          <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                        @endforeach
+                        
                     </select>
                   </div>
                   <div class="div_design">
