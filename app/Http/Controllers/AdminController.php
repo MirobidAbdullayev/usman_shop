@@ -53,4 +53,9 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function show_product()
+    {
+        return view('admin.show_product');
+    }
 }
