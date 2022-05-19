@@ -71,6 +71,8 @@
                 <th class="th_deg">Narxi</th>
                 <th class="th_deg">Chegirma narxi</th>
                 <th class="th_deg">Mahsulot rasmi</th>
+                <th class="th_deg">O'chirish</th>
+                <th class="th_deg">Tahrirlash</th>
               </tr>
               @foreach ($product as $product)
               <tr>
@@ -78,12 +80,18 @@
                 <td>{{$product->description}}</td>
                 <td>{{$product->quantity}}</td>
                 <td>{{$product->category}}</td>
-                <td>{{$product->price}}</td>
-                <td>{{$product->discount_price}}</td>
+                <td>{{$product->price}}$</td>
+                <td>{{$product->discount_price}}$</td>
                 <td>
 
                   <img class="img_size" src="/product/{{$product->image}}">
 
+                </td>
+                <td>
+                  <a class="btn btn-danger" onclick="return confirm('Siz buni haqiqatdan ham o\'chirmoqchimisiz?')" href="{{url('delete_product', $product->id)}}">O'chirish</a>
+                </td>
+                <td>
+                  <a class="btn btn-success" href="">Tahrirlash</a>
                 </td>
               </tr>
               @endforeach
