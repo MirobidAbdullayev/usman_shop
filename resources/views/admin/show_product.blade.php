@@ -91,7 +91,7 @@
                   <a class="btn btn-danger" onclick="return confirm('Siz buni haqiqatdan ham o\'chirmoqchimisiz?')" href="{{url('delete_product', $product->id)}}">O'chirish</a>
                 </td>
                 <td>
-                  <a class="btn btn-success" href="">Tahrirlash</a>
+                  <a class="btn btn-success" href="{{url('update_product',$product->id)}}">Tahrirlash</a>
                 </td>
               </tr>
               @endforeach
