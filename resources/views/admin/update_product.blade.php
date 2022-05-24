@@ -59,8 +59,8 @@
         <div class="main-panel">
           <div class="content-wrapper">
               <div class="div_center">
-                  <h1 class="font_size">Mahsulotni Qo'shish</h1>
-                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                  <h1 class="font_size">Mahsulotni Yangilash</h1>
+                <form action="{{url('/update_product_confirm',$product->id)}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="div_design">
                     <label>Mahsulot Nomi :</label>
@@ -100,10 +100,10 @@
 
                   <div class="div_design">
                     <label>Mahsulot Rasmini o'zgartirish :</label>
-                    <input type="file" name="image" required="">
+                    <input type="file" name="image">
                   </div>
                   <div class="div_design">
-                      <input type="submit" value="Mahsulot Qo'shish" class="btn btn-primary">
+                      <input type="submit" value="Mahsulotni yangilash" class="btn btn-primary">
                   </div>
                 </form>
               </div>
