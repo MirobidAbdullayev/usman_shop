@@ -21,14 +21,52 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+
+      <style type="text/css">
+         .img_product
+         {
+         width: 500px;
+         height: 500px;
+         }
+      </style>
    </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
          @include('home.header')
          <!-- end header section -->
-         
-      </div>
+      
+
+      <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px;">
+
+                     <div class="img-box">
+                        <img class="img_product" src="product/{{$product->image}}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           {{$product->title}}
+                        </h5>
+                        @if ($product->discount_price!=null)
+                        <h6 style="color: red">
+                          Chegirma: ${{$product->discount_price}}
+                        </h6>
+
+                        <h6 style="text-decoration: line-through; color: blue">
+                         Narxi: ${{$product->price}}
+                        </h6>
+                           @else
+                        
+                        <h6 style="color: blue">
+                         Narxi: ${{$product->price}}
+                        </h6>
+                        @endif
+                        <h6>Mahsulot turi: {{$product->category}}</h6>
+                        <h6>Mahsulot tafsiloti: {{$product->description}}</h6>
+                        <h6>Mahsulot miqdori: {{$product->quantity}}</h6>
+                        <a href="" class="btn btn-primary">Add to Cart</a>
+                     </div>
+                  </div>
+               </div>
       
       <!-- footer start -->
       @include('home.footer')
