@@ -63,7 +63,17 @@
                         <h6>Mahsulot turi: {{$product->category}}</h6>
                         <h6>Mahsulot tafsiloti: {{$product->description}}</h6>
                         <h6>Mahsulot miqdori: {{$product->quantity}}</h6>
-                        <a href="" class="btn btn-primary">Add to Cart</a>
+                        <form action="{{url('add_cart', $product->id)}}" method="Post">
+                              @csrf
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <input type="number" name="quantity" value="1" min="1" style="width: 100px">
+                                 </div>
+                                 <div class="col-md-4">
+                                    <input type="submit" value="Add To Cart">
+                                 </div>
+                              </div>
+                           </form>
                      </div>
                   </div>
                </div>
