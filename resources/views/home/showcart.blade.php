@@ -20,6 +20,29 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+
+      <style type="text/css">
+         .center
+         {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            padding: 30px;
+         }
+
+         table,th,td
+         {
+            border: 1px solid grey;
+         }
+
+         .th_deg
+         {
+            font-size: 26px;
+            padding: 5px;
+            background: skyblue;
+         }
+      </style>
+
    </head>
    <body>
       <div class="hero_area">
@@ -27,8 +50,29 @@
          @include('home.header')
          <!-- end header section -->
          
-      </div>
       
+      
+      <div class="center">
+         <table>
+            <tr>
+               <th class="th_deg">Product title</th>
+               <th class="th_deg">Product quantity</th>
+               <th class="th_deg">Price</th>
+               <th class="th_deg">Image</th>
+               <th class="th_deg">Action</th>
+            </tr>
+            @foreach ($cart as $cart)
+            <tr>
+               <td>{{$cart->product_title}}</td>
+               <td>{{$cart->quantity}}</td>
+               <td>{{$cart->price}}</td>
+               <td>sssssss</td>
+               <td>ssss</td>
+            </tr>
+            @endforeach
+         </table>
+      </div>
+
       <!-- footer start -->
       @include('home.footer')
       <!-- footer end -->

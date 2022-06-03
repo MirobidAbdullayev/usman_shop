@@ -70,6 +70,8 @@ class HomeController extends Controller
 
     public function show_cart()
     {
-        return view('home.showcart');
+        $id=Auth::user()->id;
+        $cart=cart::where('user_id', '=', $id)->get();
+        return view('home.showcart', compact('cart'));
     }
 }
