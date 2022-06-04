@@ -41,6 +41,12 @@
             padding: 5px;
             background: skyblue;
          }
+
+         .img_deg
+         {
+            height: 100px;
+            width: 100px;
+         }
       </style>
 
    </head>
@@ -61,14 +67,16 @@
                <th class="th_deg">Image</th>
                <th class="th_deg">Action</th>
             </tr>
+            <?php $totalprice=0; ?>
             @foreach ($cart as $cart)
             <tr>
                <td>{{$cart->product_title}}</td>
                <td>{{$cart->quantity}}</td>
                <td>{{$cart->price}}</td>
-               <td>sssssss</td>
+               <td><img class="img_deg" src="/product/{{$cart->image}}"></td>
                <td>ssss</td>
             </tr>
+            <?php $totalprice=$totalprice + $cart->price ?>
             @endforeach
          </table>
       </div>
