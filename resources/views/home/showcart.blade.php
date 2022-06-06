@@ -25,7 +25,7 @@
          .center
          {
             margin: auto;
-            width: 70%;
+            width: 50%;
             text-align: center;
             padding: 30px;
          }
@@ -87,6 +87,11 @@
          </table>
          <div>
             <h1 class="total_deg">Total Price: ${{$totalprice}}</h1>
+         </div>
+         <div>
+            <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed to Order</h1>
+            <a href="" class="btn btn-danger">Cash On Delivery</a>
+            <a href="" class="btn btn-danger">Pay Using Card</a>
          </div>
       </div>
 
