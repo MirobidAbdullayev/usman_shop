@@ -25,7 +25,7 @@
          .center
          {
             margin: auto;
-            width: 50%;
+            width: 45%;
             text-align: center;
             padding: 30px;
          }
@@ -61,17 +61,22 @@
          <!-- header section strats -->
          @include('home.header')
          <!-- end header section -->
-         
+         @if (session()->has('message'))
+            <div class="alert alert-success">
+               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+               {{session()->get('message')}}
+            </div>
+         @endif
       
       
       <div class="center">
          <table>
             <tr>
-               <th class="th_deg">Product title</th>
-               <th class="th_deg">Product quantity</th>
-               <th class="th_deg">Price</th>
-               <th class="th_deg">Image</th>
-               <th class="th_deg">Action</th>
+               <th class="th_deg">Mahsulot Nomi</th>
+               <th class="th_deg">Miqdori</th>
+               <th class="th_deg">Narxi</th>
+               <th class="th_deg">Rasmi</th>
+               <th class="th_deg">Harakat</th>
             </tr>
             <?php $totalprice=0; ?>
             @foreach ($cart as $cart)
@@ -80,18 +85,18 @@
                <td>{{$cart->quantity}}</td>
                <td>${{$cart->price}}</td>
                <td><img class="img_deg" src="/product/{{$cart->image}}"></td>
-               <td><a class="btn btn-danger" onclick="return confirm('Are you sure to remove this product?')" href="{{url('/remove_cart', $cart->id)}}">Remove Product</a></td>
+               <td><a class="btn btn-danger" onclick="return confirm('Are you sure to remove this product?')" href="{{url('/remove_cart', $cart->id)}}">Olib tashlash</a></td>
             </tr>
             <?php $totalprice=$totalprice + $cart->price ?>
             @endforeach
          </table>
          <div>
-            <h1 class="total_deg">Total Price: ${{$totalprice}}</h1>
+            <h1 class="total_deg">Umumiy Narx: ${{$totalprice}}</h1>
          </div>
          <div>
-            <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed to Order</h1>
-            <a href="" class="btn btn-danger">Cash On Delivery</a>
-            <a href="" class="btn btn-danger">Pay Using Card</a>
+            <h1 style="font-size: 25px; padding-bottom: 15px;">Buyurtmaga o'ting</h1>
+            <a href="{{url('cash_order')}}" class="btn btn-danger">Naqt Pul</a>
+            <a href="" class="btn btn-danger">Karta Orqali</a>
          </div>
       </div>
 
