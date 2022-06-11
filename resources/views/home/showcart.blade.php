@@ -96,7 +96,7 @@
          <div>
             <h1 style="font-size: 25px; padding-bottom: 15px;">Buyurtmaga o'ting</h1>
             <a href="{{url('cash_order')}}" class="btn btn-danger">Naqt Pul</a>
-            <a href="" class="btn btn-danger">Karta Orqali</a>
+            <a href="{{url('stripe', $totalprice)}}" class="btn btn-danger">Karta Orqali</a>
          </div>
       </div>
 

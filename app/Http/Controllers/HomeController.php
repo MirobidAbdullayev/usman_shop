@@ -122,4 +122,9 @@ class HomeController extends Controller
 
         return redirect()->back()->with('message','Buyurtmangizni olindi, tez orada siz bilan bog\'lanamiz.');
     }
+
+    public function stripe($totalprice)
+    {
+        return view('home.stripe', compact('totalprice'));
+    }
 }
