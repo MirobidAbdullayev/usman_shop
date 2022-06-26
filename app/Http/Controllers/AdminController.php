@@ -102,4 +102,9 @@ class AdminController extends Controller
         return redirect()->back();
         
     }
+
+    public function order()
+    {
+        return view('admin.order');
+    }
 }
