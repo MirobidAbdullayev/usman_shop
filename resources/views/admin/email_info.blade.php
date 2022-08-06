@@ -43,33 +43,34 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <h1 style="text-align: center; font-size: 25px;">Send Email to {{$order->email}}</h1>
-              <form action="">
+              <form action="{{url('send_user_email', $order->id)}}" method="POST">
+                @csrf
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email Greeting :</label>
-                  <input type="text" namespace="greeting">
+                  <input style="color: black;" type="text" namespace="greeting">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email FirstLine :</label>
-                  <input type="text" namespace="firstline">
+                  <input style="color: black;" type="text" namespace="firstline">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email Body :</label>
-                  <input type="text" namespace="body">
+                  <input style="color: black;" type="text" namespace="body">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email Button name :</label>
-                  <input type="text" namespace="button">
+                  <input style="color: black;" type="text" namespace="button">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email Url :</label>
-                  <input type="text" namespace="url">
+                  <input style="color: black;" type="text" namespace="url">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
                   <label>Email Last Line :</label>
-                  <input type="text" namespace="lastline">
+                  <input style="color: black;" type="text" namespace="lastline">
                 </div>
                 <div style="padding-left: 35%; padding-top: 30px;">
-                  <input type="submit" value="Send Email" class="btn btn-primary">
+                  <input style="color: black;" type="submit" value="Send Email" class="btn btn-primary">
                 </div>
               </form>
             </div>
