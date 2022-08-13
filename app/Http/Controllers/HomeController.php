@@ -156,4 +156,14 @@ class HomeController extends Controller
               
         return back();
     }
+
+    public function show_order()
+    {
+        if(Auth::id())
+        {
+            return view('home.order');
+        }else{
+            return redirect('login');
+        }
+    }
 }
