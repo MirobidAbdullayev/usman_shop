@@ -56,15 +56,27 @@
                     <th class="th_deg">Payment Status</th>
                     <th class="th_deg">Delivery Status</th>
                     <th class="th_deg">Image</th>
+                    <th class="th_deg">Cancel Order</th>
                 </tr>
+                @foreach ($order as $order)
                 <tr>
-                    <td>hjashjajh</td>
-                    <td>shajsajh</td>
-                    <td>sasasa</td>
-                    <td>sasasas</td>
-                    <td>sasasas</td>
-                    <td>sasasa</td>
+                    <td>{{$order->product_title}}</td>
+                    <td>{{$order->quantity}}</td>
+                    <td>${{$order->price}}</td>
+                    <td>{{$order->payment_status}}</td>
+                    <td>{{$order->delivery_status}}</td>
+                    <td>
+                        <img height="100" width="100" src="product/{{$order->image}}">
+                    </td>
+                    <td>
+                        @if ($order->delivery_status=='processing')
+                        <a onclick="return confirm('Are you Sure to cancel this order!!!')" class="btn btn-danger" href="{{url('cancel_order', $order->id)}}">Cancel order</a>
+                        @else
+                        <p style="color: blue;">Ruxsat Berilmgan</p>
+                        @endif
+                    </td>
                 </tr>
+                @endforeach
             </table>
         </div>
       <!-- jQery -->

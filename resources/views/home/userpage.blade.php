@@ -42,6 +42,17 @@
       @include('home.product')
       <!-- end product section -->
 
+      <!--comment -->
+      <div style="text-align: center; padding-bottom: 30px;">
+         <h1 style="font-size: 30px; text-align: center; padding-top: 20px; padding-bottom: 20px;">Comments</h1>
+         <form>
+            <textarea style="height: 150px; width: 600px;" placeholder="Comment something here"></textarea>
+            <br>
+            <a href="" class="btn btn-primary">Comment</a>
+         </form>
+      </div>
+      <!--comment-->
+
       <!-- subscribe section -->
       @include('home.subscribe')
       <!-- end subscribe section -->
