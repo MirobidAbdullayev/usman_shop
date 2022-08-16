@@ -20,6 +20,7 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    </head>
    <body>
       <div class="hero_area">
@@ -51,6 +52,19 @@
             <a href="" class="btn btn-primary">Comment</a>
          </form>
       </div>
+      <div style="padding-left: 20%;">
+         <h1 style="font-size: 20px; padding-bottom: 20px;">All Comments</h1>
+         <div>
+            <b>Mirobid</b>
+            <p>Bu mening birinchi commentim</p>
+            <a href="javascript::void(0);" onclick="reply(this)">Reply</a>
+         </div>
+         <div style="display: none;" class="replyDiv">
+            <textarea style="height: 100px; width: 500px;" placeholder="write something here"></textarea>
+            <br>
+            <a href="" class="btn btn-primary">Reply</a>
+         </div>
+      </div>
       <!--comment-->
 
       <!-- subscribe section -->
@@ -70,6 +84,12 @@
          </p>
       </div>
       <!-- jQery -->
+      <script type="text/javascript">
+         function reply(coller)
+         {
+            $('.replyDiv').insertAfter($(caller))
+         }
+      </script>
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
       <script src="home/js/popper.min.js"></script>
