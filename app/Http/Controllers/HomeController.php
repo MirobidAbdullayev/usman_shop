@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Comment;
+use App\Models\Reply;
 use Session;
 use Stripe;
 
@@ -39,7 +41,8 @@ class HomeController extends Controller
             return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing'));
         }else{
             $product=Product::paginate(9);
-            return view('home.userpage',compact('product'));
+            $comment=comment::all();
+            return view('home.userpage',compact('product','comment'));
         }
     }
 
@@ -177,5 +180,20 @@ class HomeController extends Controller
         $order->delivery_status='Buyurtma bekor qilindi!';
         $order->save();
         return redirect()->back();
+    }
+
+    public function add_comment(Request $request)
+    {
+        if(Auth::id())
+        {
+            $comment=new comment;
+            $comment->name=Auth::user()->name;
+            $comment->user_id=Auth::user()->id;
+            $comment->comment=$request->comment;
+            $comment->save();
+            return redirect()->back();
+        }else{
+            return redirect('login');
+        }
     }
 }

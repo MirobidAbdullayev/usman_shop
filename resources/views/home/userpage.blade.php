@@ -20,9 +20,7 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   </head>
-   <body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   <body>
       <div class="hero_area">
          <!-- header section strats -->
          @include('home.header')
@@ -46,23 +44,28 @@
       <!--comment -->
       <div style="text-align: center; padding-bottom: 30px;">
          <h1 style="font-size: 30px; text-align: center; padding-top: 20px; padding-bottom: 20px;">Comments</h1>
-         <form>
-            <textarea style="height: 150px; width: 600px;" placeholder="Comment something here"></textarea>
+         <form action="{{url('add_comment')}}" method="POST">
+            @csrf
+            <textarea style="height: 150px; width: 600px;" placeholder="Comment something here" name="comment"></textarea>
             <br>
-            <a href="" class="btn btn-primary">Comment</a>
+            <input type="submit" class="btn btn-primary" value="Comment">
          </form>
       </div>
       <div style="padding-left: 20%;">
          <h1 style="font-size: 20px; padding-bottom: 20px;">All Comments</h1>
-         <div>
-            <b>Mirobid</b>
-            <p>Bu mening birinchi commentim</p>
-            <a href="javascript::void(0);" onclick="reply(this)">Reply</a>
-         </div>
+         @foreach($comment as $comment)
+            <div>
+               <b>{{$comment->name}}</b>
+               <p>{{$comment->comment}}</p>
+               <a href="javascript::void(0);" onclick="reply(this)">Reply</a>
+            </div>
+         @endforeach
          <div style="display: none;" class="replyDiv">
+            <input type="text" id="commentId" name="commentId">
             <textarea style="height: 100px; width: 500px;" placeholder="write something here"></textarea>
             <br>
             <a href="" class="btn btn-primary">Reply</a>
+            <a href="javascript::void(0);" class="btn" onClick="reply_close(this)">Close</a>
          </div>
       </div>
       <!--comment-->
@@ -85,9 +88,15 @@
       </div>
       <!-- jQery -->
       <script type="text/javascript">
-         function reply(coller)
+         function reply(caller)
          {
-            $('.replyDiv').insertAfter($(caller))
+            //document.getElementById('commentId').value=$(caller).attr('data-Commentid');
+            $('.replyDiv').insertAfter($(caller));
+            $('.replyDiv').show();
+         }
+         function reply_close(caller)
+         {
+            $('.replyDiv').show();
          }
       </script>
       <script src="home/js/jquery-3.4.1.min.js"></script>
