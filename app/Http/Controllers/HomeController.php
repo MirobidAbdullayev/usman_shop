@@ -18,7 +18,9 @@ class HomeController extends Controller
     public function index()
     {
         $product=Product::paginate(9);
-        return view('home.userpage',compact('product'));
+        $comment=comment::orderby('id', 'desc')->get();
+        $reply=reply::all();
+        return view('home.userpage',compact('product','comment','reply'));
     }
 
     public function redirect()
@@ -41,8 +43,9 @@ class HomeController extends Controller
             return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing'));
         }else{
             $product=Product::paginate(9);
-            $comment=comment::all();
-            return view('home.userpage',compact('product','comment'));
+            $comment=comment::orderby('id', 'desc')->get();
+            $reply=reply::all();
+            return view('home.userpage',compact('product','comment','reply'));
         }
     }
 
@@ -195,5 +198,30 @@ class HomeController extends Controller
         }else{
             return redirect('login');
         }
+    }
+
+    public function add_reply(Request $request)
+    {
+        if(Auth::id())
+        {
+            $reply=new reply;
+            $reply->name=Auth::user()->name;
+            $reply->user_id=Auth::user()->id;
+            $reply->comment_id=$request->commentId;
+            $reply->reply=$request->reply;
+            $reply->save();
+            return redirect()->back();
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function product_search(Request $request)
+    {
+        $comment=comment::orderby('id', 'desc')->get();
+        $reply=reply::all();
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->paginate(9);
+        return view('home.userpage', compact('product','comment','reply'));
     }
 }
