@@ -224,4 +224,12 @@ class HomeController extends Controller
         $product=product::where('title','LIKE',"%$search_text%")->paginate(9);
         return view('home.userpage', compact('product','comment','reply'));
     }
+
+    public function products()
+    {
+        $product=Product::paginate(9);
+        $comment=comment::orderby('id', 'desc')->get();
+        $reply=reply::all();
+        return view('home.all_product', compact('product','comment', 'reply'));
+    }
 }
