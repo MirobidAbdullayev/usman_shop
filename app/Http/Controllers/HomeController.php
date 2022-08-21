@@ -60,7 +60,9 @@ class HomeController extends Controller
         if(Auth::id())
         {
             $user=Auth::user();
+            $userid=$user->id;
             $product=product::find($id);
+            $product_exist_id=cart::where('Product_id', '=', $id)->where('user_id', '=', $userid)->get('id')->first();
             $cart=new cart;
 
             $cart->name=$user->name;
@@ -231,5 +233,14 @@ class HomeController extends Controller
         $comment=comment::orderby('id', 'desc')->get();
         $reply=reply::all();
         return view('home.all_product', compact('product','comment', 'reply'));
+    }
+
+    public function search_product(Request $request)
+    {
+        $comment=comment::orderby('id', 'desc')->get();
+        $reply=reply::all();
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->paginate(9);
+        return view('home.userpage', compact('product','comment','reply'));
     }
 }

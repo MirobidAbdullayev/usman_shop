@@ -28,7 +28,7 @@
          
       
       <!-- product section -->
-      @include('home.product')
+      @include('home.product_view')
       <!-- end product section -->
 
       <!--comment -->
