@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Order;
 use PDF;
@@ -14,8 +15,14 @@ class AdminController extends Controller
 {
     public function view_category()
     {
-        $data=category::all();
-        return view('admin.category', compact('data'));
+        if(Auth::id())
+        {
+            $data=category::all();
+            return view('admin.category', compact('data'));
+        }else{
+            return redirect('login');
+        }
+        
     }
 
     public function add_category(Request $request)
@@ -82,7 +89,9 @@ class AdminController extends Controller
 
     public function update_product_confirm(Request $request,$id)
     {
-        $product=product::find($id);
+        if(Auth::id())
+        {
+            $product=product::find($id);
 
         $product->title=$request->title;
         $product->description=$request->description;
@@ -104,6 +113,10 @@ class AdminController extends Controller
         
         $product->save();
         return redirect()->back();
+        }else{
+            return redirect('login');
+        }
+        
         
     }
 
